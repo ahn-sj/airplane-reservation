@@ -1,5 +1,11 @@
 # Highest-Way
 
+### [Discussions](https://github.com/ahn-sj/airplane-reservation/discussions)
+### [Wiki](https://github.com/ahn-sj/airplane-reservation/wiki)
+### [Milestones](https://github.com/ahn-sj/airplane-reservation/milestones)
+
+<br/>
+
 ## 💬 서비스 소개
 
 ---
@@ -50,4 +56,4 @@ Spring Boot Cache 적용<br/>
 파일 분리 (application.yml, logging.yml)<br/>
 DB 형상관리(flyway)<br/>
 Attribute Converter로 YN 필드 처리<br/>
-좌석 예매(추후 동시성도 고려)
+좌석 예매(추후 동시성도 고려) -> 동시성 처리는 버전과 retry 로직으로 해결
