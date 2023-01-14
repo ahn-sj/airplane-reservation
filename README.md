@@ -1,12 +1,34 @@
-# airplane-reservation
+# Highest-Way
 
-## Env.
+## 💬 서비스 소개
+
+---
+비행기 예약 서비스
+
+<br/>
+
+## 🏃‍♂️ 멤버
+
+---
+<table>
+    <tr height="140px">
+        <td align="center" width="130px">
+            <a href="https://github.com/ahn-sj"><img height="100px" width="100px" src="https://avatars.githubusercontent.com/u/64416833?v=4"/></a>
+            <br />
+            <a href="https://github.com/ahn-sj">ahn-sj</a>
+        </td>
+    </tr>
+</table>
+
+<br/>
+
+## 🔫 개발 환경
+
+---
 
 - Java 11
 - Spring Boot 2.7.7
 - gradle
-
-### Dependencies
 - Spring Web
 - Spring Data JPA
 - Spring Security
@@ -16,19 +38,16 @@
 - Lombok
 - Dev Tools
 
----
+<br/> 
 
 ### 🚗 Challenge
+
+---
 Pub/Sub 기반의 알림 기능<br/>
-계층형 아키텍처or이벤트 기반 아키텍처or도메인 <br/>주도or헥사고날 아키텍처
-적시적소에 맞는 Filter, Interceptor<br/>
 Spring Security 세션 기반 인증<br/>
-다중 서버 환경에서 세션 관리<br/>
-Embedded Embeddable<br/>
+임베디드 타입을 적극 적용<br/>
 Spring Boot Cache 적용<br/>
 파일 분리 (application.yml, logging.yml)<br/>
-BigDecimal을 이용하여 달러 <-> 원화 변환<br/>
-flyway를 통한 DB 형상관리<br/>
+DB 형상관리(flyway)<br/>
 Attribute Converter로 YN 필드 처리<br/>
-국제화 처리<br/>
-좌석 예매(무통장 예매처럼 즉시 결제가 아닌 경우에 대한 처리도 고민해보기)
+좌석 예매(추후 동시성도 고려)
