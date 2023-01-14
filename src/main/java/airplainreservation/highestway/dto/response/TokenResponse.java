@@ -1,4 +1,4 @@
-package airplainreservation.highestway.dto;
+package airplainreservation.highestway.dto.response;
 
 import lombok.Getter;
 

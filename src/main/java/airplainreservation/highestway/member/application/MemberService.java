@@ -1,6 +1,6 @@
 package airplainreservation.highestway.member.application;
 
-import airplainreservation.highestway.dto.TokenResponse;
+import airplainreservation.highestway.dto.response.TokenResponse;
 import airplainreservation.highestway.exception.CustomCommonException;
 import airplainreservation.highestway.exception.ErrorCode;
 import airplainreservation.highestway.member.domain.Member;
@@ -14,7 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static airplainreservation.highestway.dto.MemberRequest.*;
+import static airplainreservation.highestway.dto.request.MemberRequest.MemberLoginRequest;
+import static airplainreservation.highestway.dto.response.MemberResponse.MemberFindResponse;
+import static airplainreservation.highestway.security.TokenProvider.ACCESS_TOKEN;
+import static airplainreservation.highestway.security.TokenProvider.BEARER;
 
 @Service
 @Slf4j
@@ -46,6 +49,17 @@ public class MemberService {
         return tokenResponse;
     }
 
+    public MemberFindResponse find(Long memberId) {
+        Member member = findMember(memberId);
+        return MemberFindResponse.of(member);
+    }
+
+    private Member findMember(Long memberId) {
+        return memberRepository.findById(memberId).orElseThrow(
+                () -> new CustomCommonException(ErrorCode.NOT_EXISTS_MEMBER)
+        );
+    }
+
     private void checkUniqueUsername(Member member) {
         if(memberRepository.existsByUsername(member.getUsername())) {
             throw new CustomCommonException(ErrorCode.DUPLICATE_USERNAME);
@@ -71,7 +85,7 @@ public class MemberService {
     }
 
     private void addTokenHeader(HttpServletResponse response, TokenResponse tokenResponse) {
-        response.addHeader(TokenProvider.ACCESS_TOKEN, tokenResponse.getAccessToken());
+        response.addHeader(ACCESS_TOKEN, BEARER + tokenResponse.getAccessToken());
 //        response.addHeader(TokenProvider.REFRESH_TOKEN, tokenResponse.getRefreshToken());
     }
 }
