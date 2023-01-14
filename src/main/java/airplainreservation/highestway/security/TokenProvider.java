@@ -1,6 +1,6 @@
 package airplainreservation.highestway.security;
 
-import airplainreservation.highestway.dto.TokenResponse;
+import airplainreservation.highestway.dto.response.TokenResponse;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -21,8 +21,11 @@ public class TokenProvider {
     public static final long ACCESS_TOKEN_EXPIRE = 2 * 60 * 60 * 1000L;      // 2H
     public static final long REFRESH_TOKEN_EXPIRE = 7 * 24 * 60 * 60 * 1000L; // D7
 
+    public static final String BEARER = "Bearer ";
+
     public static final String ACCESS_TOKEN = "Authorization";
     public static final String REFRESH_TOKEN = "Refresh_Token";
+
 
     public static final String ACCESS = "ACCESS";
     public static final String REFRESH = "REFRESH";
@@ -47,7 +50,7 @@ public class TokenProvider {
 
         long time = type.equals(ACCESS) ? ACCESS_TOKEN_EXPIRE : REFRESH_TOKEN_EXPIRE;
 
-        return Jwts.builder()
+        return BEARER + Jwts.builder()
                 .setSubject(username)
                 .setExpiration(new Date(date.getTime() + time))
                 .setIssuedAt(date)

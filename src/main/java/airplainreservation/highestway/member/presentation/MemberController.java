@@ -1,19 +1,20 @@
 package airplainreservation.highestway.member.presentation;
 
-import airplainreservation.highestway.dto.TokenResponse;
+import airplainreservation.highestway.dto.response.TokenResponse;
 import airplainreservation.highestway.member.application.MemberService;
+import airplainreservation.highestway.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 
-import static airplainreservation.highestway.dto.MemberRequest.*;
+import static airplainreservation.highestway.dto.request.MemberRequest.MemberLoginRequest;
+import static airplainreservation.highestway.dto.request.MemberRequest.MemberRegisterRequest;
+import static airplainreservation.highestway.dto.response.MemberResponse.MemberFindResponse;
 
 
 @RestController
@@ -37,5 +38,12 @@ public class MemberController {
         TokenResponse tokenResponse = memberService.login(memberLoginRequest, httpServletResponse);
 
         return ResponseEntity.ok(tokenResponse);
+    }
+
+    @GetMapping("/{memberId}")
+    public ResponseEntity<MemberFindResponse> findMember(@PathVariable Long memberId,
+                                                         @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        return ResponseEntity.ok(memberService.find(memberId));
+
     }
 }

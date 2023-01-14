@@ -16,3 +16,7 @@ Content-Type: application/json
   "username": "jae",
   "password": "jae"
 }
+
+### 3. 회원 찾기
+GET localhost:8080/api/member/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWUiLCJleHAiOjE2NzM3MTU2NjgsImlhdCI6MTY3MzcwODQ2OH0.85ntgYBjcjpTvXsfXq9FYn_VoNYWeBxiWRT6TSRZEAs"
