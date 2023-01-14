@@ -1,0 +1,9 @@
+### 1. 회원가입
+POST localhost:8080/api/member/signup
+Content-Type: application/json
+
+{
+  "username": "jae",
+  "password": "jae",
+  "email": "jae@jae.com"
+}

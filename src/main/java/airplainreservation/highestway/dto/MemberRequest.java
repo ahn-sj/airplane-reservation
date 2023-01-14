@@ -2,13 +2,15 @@ package airplainreservation.highestway.dto;
 
 import airplainreservation.highestway.member.domain.Member;
 import airplainreservation.highestway.member.domain.MemberRole;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 public class MemberRequest {
 
     @Getter
+    @NoArgsConstructor
     public static class MemberRegisterRequest {
         private String username;
         private String password;
@@ -19,6 +21,20 @@ public class MemberRequest {
             this.username = username;
             this.password = password;
             this.email = email;
+        }
+
+        public void updateEncodedPassword(String encodedPassword) {
+            this.password = encodedPassword;
+        }
+
+        public Member toEntity() {
+            return Member.builder()
+                    .username(username)
+                    .password(password)
+                    .email(email)
+                    .role(role)
+                    .build();
+
         }
     }
 
