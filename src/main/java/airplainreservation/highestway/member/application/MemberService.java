@@ -1,6 +1,8 @@
 package airplainreservation.highestway.member.application;
 
 import airplainreservation.highestway.dto.MemberRequest;
+import airplainreservation.highestway.exception.CustomCommonException;
+import airplainreservation.highestway.exception.ErrorCode;
 import airplainreservation.highestway.member.infrastructure.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,9 +20,14 @@ public class MemberService {
 
     @Transactional
     public void registerMember(MemberRegisterRequest memberRegisterRequest) {
-//        if(memberRepository.existsByEmail(memberRegisterRequest.getEmail())) {
-//            throw new CustomException(ErrorCode.);
-//        }
+        if(memberRepository.existsByEmail(memberRegisterRequest.getEmail())) {
+            throw new CustomCommonException(ErrorCode.DUPLICATE_EMAIL);
+        }
+
+        if(memberRepository.existsByUsername(memberRegisterRequest.getUsername())) {
+            throw new CustomCommonException(ErrorCode.DUPLICATE_USERNAME);
+        }
+
 
 
     }
