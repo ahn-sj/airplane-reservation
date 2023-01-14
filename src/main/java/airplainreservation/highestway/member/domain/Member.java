@@ -1,5 +1,6 @@
 package airplainreservation.highestway.member.domain;
 
+import airplainreservation.highestway.common.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-public class Member {
+public class Member extends BaseTimeEntity {
 
     @Id @GeneratedValue
     private Long id;
@@ -23,6 +24,10 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private MemberRole role;
+
+    public String getRoleName() {
+        return role.name();
+    }
 
     @Builder
     public Member(String username, String password, String email, boolean enabled, MemberRole role) {
