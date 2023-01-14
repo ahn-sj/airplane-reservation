@@ -28,16 +28,10 @@ public class MemberService {
 
     @Transactional
     public Long registerMember(Member member) {
-        if(memberRepository.existsByEmail(member.getEmail())) {
-            throw new CustomCommonException(ErrorCode.DUPLICATE_EMAIL);
-        }
-
-        if(memberRepository.existsByUsername(member.getUsername())) {
-            throw new CustomCommonException(ErrorCode.DUPLICATE_USERNAME);
-        }
+        checkUniqueEmail(member);
+        checkUniqueUsername(member);
 
         Member saveMember = memberRepository.save(member);
-
         return saveMember.getId();
     }
 
@@ -47,15 +41,21 @@ public class MemberService {
         checkPassword(memberLoginRequest, member);
 
         TokenResponse tokenResponse = tokenProvider.createAllToken(member.getUsername());
-
         addTokenHeader(httpServletResponse, tokenResponse);
 
         return tokenResponse;
     }
 
-    private void addTokenHeader(HttpServletResponse response, TokenResponse tokenResponse) {
-        response.addHeader(TokenProvider.ACCESS_TOKEN, tokenResponse.getAccessToken());
-//        response.addHeader(TokenProvider.REFRESH_TOKEN, tokenResponse.getRefreshToken());
+    private void checkUniqueUsername(Member member) {
+        if(memberRepository.existsByUsername(member.getUsername())) {
+            throw new CustomCommonException(ErrorCode.DUPLICATE_USERNAME);
+        }
+    }
+
+    private void checkUniqueEmail(Member member) {
+        if(memberRepository.existsByEmail(member.getEmail())) {
+            throw new CustomCommonException(ErrorCode.DUPLICATE_EMAIL);
+        }
     }
 
     private Member findMemberByUsername(MemberLoginRequest memberLoginRequest) {
@@ -68,5 +68,10 @@ public class MemberService {
         if(!passwordEncoder.matches(memberLoginRequest.getPassword(), member.getPassword())){
             throw new CustomCommonException(ErrorCode.NOT_EQUAL_PASSWORD);
         }
+    }
+
+    private void addTokenHeader(HttpServletResponse response, TokenResponse tokenResponse) {
+        response.addHeader(TokenProvider.ACCESS_TOKEN, tokenResponse.getAccessToken());
+//        response.addHeader(TokenProvider.REFRESH_TOKEN, tokenResponse.getRefreshToken());
     }
 }
