@@ -34,11 +34,11 @@ public class MemberRequest {
                     .email(email)
                     .role(role)
                     .build();
-
         }
     }
 
     @Getter
+    @NoArgsConstructor
     public static class MemberLoginRequest {
         private String username;
         private String password;
@@ -48,5 +48,4 @@ public class MemberRequest {
             this.password = password;
         }
     }
-
 }
