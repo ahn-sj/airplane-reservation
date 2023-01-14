@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/highest-way
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  config:
+    activate:
+      on-profile: local
+
+  jpa:
+    hibernate:
+      ddl-auto: create
