@@ -1,0 +1,9 @@
+### 1. 비행기 추가
+POST localhost:8080/api/airplane/save
+Content-Type: application/json
+
+{
+  "registrationNumber": "jae",
+  "seatRow": 4,
+  "seatCol": 4
+}

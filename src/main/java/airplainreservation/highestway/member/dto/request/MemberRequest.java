@@ -1,4 +1,4 @@
-package airplainreservation.highestway.common.request;
+package airplainreservation.highestway.member.dto.request;
 
 import airplainreservation.highestway.member.domain.Member;
 import airplainreservation.highestway.member.domain.MemberRole;
