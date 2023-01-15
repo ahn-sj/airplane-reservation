@@ -1,6 +1,6 @@
 package airplainreservation.highestway.member.presentation;
 
-import airplainreservation.highestway.common.response.TokenResponse;
+import airplainreservation.highestway.common.dto.TokenResponse;
 import airplainreservation.highestway.member.application.MemberService;
 import airplainreservation.highestway.common.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.net.URI;
 
-import static airplainreservation.highestway.common.request.MemberRequest.MemberLoginRequest;
-import static airplainreservation.highestway.common.request.MemberRequest.MemberRegisterRequest;
-import static airplainreservation.highestway.common.response.MemberResponse.MemberFindResponse;
+import static airplainreservation.highestway.member.dto.request.MemberRequest.MemberLoginRequest;
+import static airplainreservation.highestway.member.dto.request.MemberRequest.MemberRegisterRequest;
+import static airplainreservation.highestway.member.dto.response.MemberResponse.MemberFindResponse;
 
 
 @RestController

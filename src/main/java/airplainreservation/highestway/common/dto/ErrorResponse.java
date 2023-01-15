@@ -1,4 +1,4 @@
-package airplainreservation.highestway.common.exception;
+package airplainreservation.highestway.common.dto;
 
 public class ErrorResponse {
     private String message;

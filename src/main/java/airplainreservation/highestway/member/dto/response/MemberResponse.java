@@ -1,4 +1,4 @@
-package airplainreservation.highestway.common.response;
+package airplainreservation.highestway.member.dto.response;
 
 import airplainreservation.highestway.member.domain.Member;
 import lombok.Builder;

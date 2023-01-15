@@ -1,6 +1,6 @@
 package airplainreservation.highestway.member.application;
 
-import airplainreservation.highestway.common.response.TokenResponse;
+import airplainreservation.highestway.common.dto.TokenResponse;
 import airplainreservation.highestway.common.exception.CustomCommonException;
 import airplainreservation.highestway.common.exception.ErrorCode;
 import airplainreservation.highestway.member.domain.Member;
@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static airplainreservation.highestway.common.request.MemberRequest.MemberLoginRequest;
-import static airplainreservation.highestway.common.response.MemberResponse.MemberFindResponse;
+import static airplainreservation.highestway.member.dto.request.MemberRequest.MemberLoginRequest;
+import static airplainreservation.highestway.member.dto.response.MemberResponse.MemberFindResponse;
 import static airplainreservation.highestway.common.security.TokenProvider.ACCESS_TOKEN;
 import static airplainreservation.highestway.common.security.TokenProvider.BEARER;
 
