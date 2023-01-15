@@ -50,7 +50,7 @@
 
 ---
 Pub/Sub 기반의 알림 기능<br/>
-Spring Security 세션 기반 인증<br/>
+Spring Security JWT 기반 인증<br/>
 임베디드 타입을 적극 적용<br/>
 Spring Boot Cache 적용<br/>
 파일 분리 (application.yml, logging.yml)<br/>
