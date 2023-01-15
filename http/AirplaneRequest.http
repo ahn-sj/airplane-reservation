@@ -4,6 +4,6 @@ Content-Type: application/json
 
 {
   "registrationNumber": "jae",
-  "seatCol": 10,
-  "seatRow": 10
+  "seatRow": 4,
+  "seatCol": 4
 }

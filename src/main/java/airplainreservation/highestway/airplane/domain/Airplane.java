@@ -1,6 +1,7 @@
 package airplainreservation.highestway.airplane.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,7 +21,8 @@ public class Airplane {
     @OneToMany(mappedBy = "airplane", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Seat> seats = new ArrayList<>();
 
-    public void addSeats(List<Seat> seats) {
-        this.seats = seats;
+    @Builder
+    public Airplane(String registrationNumber) {
+        RegistrationNumber = registrationNumber;
     }
 }

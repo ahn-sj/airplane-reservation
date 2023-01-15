@@ -1,33 +1,44 @@
 package airplainreservation.highestway.airplane.application;
 
+import airplainreservation.highestway.airplane.domain.Airplane;
 import airplainreservation.highestway.airplane.domain.Seat;
 import airplainreservation.highestway.airplane.infrastructure.AirplaneRepository;
-import airplainreservation.highestway.airplane.infrastructure.SeatRepository;
-import airplainreservation.highestway.airplane.converter.RowColTowSeatsConverter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-import static airplainreservation.highestway.airplane.dto.request.AirplaneRequest.*;
+import static airplainreservation.highestway.airplane.dto.request.AirplaneRequest.AirplaneRegisterRequest;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class AirplaneService {
 
+    private final int SEAT_NUMBER_START = 1;
+
     private final AirplaneRepository airplaneRepository;
-    private final SeatRepository seatRepository;
 
     @Transactional
-    public void saveAirplaneWithSeatList(AirplaneRegisterRequest airplaneRegisterRequest) {
-        List<Seat> seats = RowColTowSeatsConverter.convertFromRowColToSeats(airplaneRegisterRequest.getSeatRow(), airplaneRegisterRequest.getSeatCol());
-        List<Seat> saveSeats = seatRepository.saveAll(seats);
+    public Long saveAirplaneWithSeatList(AirplaneRegisterRequest airplaneRegisterRequest) {
+        int seatRow = airplaneRegisterRequest.getSeatRow();
+        int seatCol = airplaneRegisterRequest.getSeatCol();
+        String registrationNumber = airplaneRegisterRequest.getRegistrationNumber();
 
-        for (Seat seat : saveSeats) {
-            System.out.println("seat = " + seat);
+        Airplane airplane = airplaneRepository.save(new Airplane(registrationNumber));
+
+        // TODO: Converter 를 활용한 리팩토링 대상
+        createFromRowColToSeat(airplane, seatRow, seatCol);
+
+        return airplane.getId();
+    }
+
+    private void createFromRowColToSeat(Airplane airplane, int seatRow, int seatCol) {
+        for (int i = SEAT_NUMBER_START; i <= seatRow; i++) {
+            for (int j = SEAT_NUMBER_START; j <= seatCol; j++) {
+                Seat seat = new Seat(i, j);
+                seat.addSeat(airplane);
+            }
         }
     }
 }

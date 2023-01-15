@@ -31,4 +31,9 @@ public class Seat extends BaseTimeEntity {
         this.seatRow = seatRow;
         this.seatCol = seatCol;
     }
+
+    public void addSeat(Airplane airplane) {
+        this.airplane = airplane;
+        airplane.getSeats().add(this);
+    }
 }
