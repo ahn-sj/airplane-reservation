@@ -1,4 +1,4 @@
-package airplainreservation.highestway.aop;
+package airplainreservation.highestway.common.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

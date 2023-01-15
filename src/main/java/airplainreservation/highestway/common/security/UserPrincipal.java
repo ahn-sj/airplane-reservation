@@ -1,4 +1,4 @@
-package airplainreservation.highestway.security;
+package airplainreservation.highestway.common.security;
 
 import airplainreservation.highestway.member.domain.Member;
 import org.springframework.security.core.GrantedAuthority;

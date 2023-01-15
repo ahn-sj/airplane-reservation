@@ -1,11 +1,11 @@
 package airplainreservation.highestway.member.application;
 
-import airplainreservation.highestway.dto.response.TokenResponse;
-import airplainreservation.highestway.exception.CustomCommonException;
-import airplainreservation.highestway.exception.ErrorCode;
+import airplainreservation.highestway.common.response.TokenResponse;
+import airplainreservation.highestway.common.exception.CustomCommonException;
+import airplainreservation.highestway.common.exception.ErrorCode;
 import airplainreservation.highestway.member.domain.Member;
 import airplainreservation.highestway.member.infrastructure.MemberRepository;
-import airplainreservation.highestway.security.TokenProvider;
+import airplainreservation.highestway.common.security.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static airplainreservation.highestway.dto.request.MemberRequest.MemberLoginRequest;
-import static airplainreservation.highestway.dto.response.MemberResponse.MemberFindResponse;
-import static airplainreservation.highestway.security.TokenProvider.ACCESS_TOKEN;
-import static airplainreservation.highestway.security.TokenProvider.BEARER;
+import static airplainreservation.highestway.common.request.MemberRequest.MemberLoginRequest;
+import static airplainreservation.highestway.common.response.MemberResponse.MemberFindResponse;
+import static airplainreservation.highestway.common.security.TokenProvider.ACCESS_TOKEN;
+import static airplainreservation.highestway.common.security.TokenProvider.BEARER;
 
 @Service
 @Slf4j

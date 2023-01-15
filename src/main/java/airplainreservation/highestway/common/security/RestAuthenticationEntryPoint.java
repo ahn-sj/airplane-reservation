@@ -1,4 +1,4 @@
-package airplainreservation.highestway.security;
+package airplainreservation.highestway.common.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;

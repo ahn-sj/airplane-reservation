@@ -1,8 +1,8 @@
-package airplainreservation.highestway.config;
+package airplainreservation.highestway.common.config;
 
-import airplainreservation.highestway.security.TokenAuthenticationFilter;
-import airplainreservation.highestway.security.RestAuthenticationEntryPoint;
-import airplainreservation.highestway.security.TokenProvider;
+import airplainreservation.highestway.common.security.TokenAuthenticationFilter;
+import airplainreservation.highestway.common.security.RestAuthenticationEntryPoint;
+import airplainreservation.highestway.common.security.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

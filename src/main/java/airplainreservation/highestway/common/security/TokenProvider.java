@@ -1,6 +1,6 @@
-package airplainreservation.highestway.security;
+package airplainreservation.highestway.common.security;
 
-import airplainreservation.highestway.dto.response.TokenResponse;
+import airplainreservation.highestway.common.response.TokenResponse;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

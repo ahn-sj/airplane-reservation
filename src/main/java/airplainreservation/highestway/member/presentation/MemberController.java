@@ -1,8 +1,8 @@
 package airplainreservation.highestway.member.presentation;
 
-import airplainreservation.highestway.dto.response.TokenResponse;
+import airplainreservation.highestway.common.response.TokenResponse;
 import airplainreservation.highestway.member.application.MemberService;
-import airplainreservation.highestway.security.UserPrincipal;
+import airplainreservation.highestway.common.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.net.URI;
 
-import static airplainreservation.highestway.dto.request.MemberRequest.MemberLoginRequest;
-import static airplainreservation.highestway.dto.request.MemberRequest.MemberRegisterRequest;
-import static airplainreservation.highestway.dto.response.MemberResponse.MemberFindResponse;
+import static airplainreservation.highestway.common.request.MemberRequest.MemberLoginRequest;
+import static airplainreservation.highestway.common.request.MemberRequest.MemberRegisterRequest;
+import static airplainreservation.highestway.common.response.MemberResponse.MemberFindResponse;
 
 
 @RestController
