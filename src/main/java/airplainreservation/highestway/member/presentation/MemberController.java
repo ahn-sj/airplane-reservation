@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.net.URI;
 
 import static airplainreservation.highestway.dto.request.MemberRequest.MemberLoginRequest;
@@ -25,7 +26,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/signup")
-    public ResponseEntity<Void> registerMember(@RequestBody MemberRegisterRequest memberRegisterRequest) {
+    public ResponseEntity<Void> registerMember(@RequestBody @Valid MemberRegisterRequest memberRegisterRequest) {
         memberRegisterRequest.updateEncodedPassword(passwordEncoder.encode(memberRegisterRequest.getPassword()));
         Long memberId = memberService.registerMember(memberRegisterRequest.toEntity());
 

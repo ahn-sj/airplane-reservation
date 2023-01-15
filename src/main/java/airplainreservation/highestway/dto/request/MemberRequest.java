@@ -7,13 +7,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotEmpty;
+
 public class MemberRequest {
 
     @Getter
     @NoArgsConstructor
     public static class MemberRegisterRequest {
+        @NotEmpty(message = "반드시 값을 입력해야 합니다.")
         private String username;
+        @NotEmpty
         private String password;
+        @NotEmpty
         private String email;
         private MemberRole role = MemberRole.ROLE_USER;
 
