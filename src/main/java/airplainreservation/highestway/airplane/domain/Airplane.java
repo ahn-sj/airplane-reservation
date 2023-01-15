@@ -1,4 +1,4 @@
-package airplainreservation.highestway.airplane;
+package airplainreservation.highestway.airplane.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -15,6 +15,5 @@ public class Airplane {
     @Id @GeneratedValue
     private Long id;
 
-//    Boolean[][] seats = new Boolean[][];
 
 }
