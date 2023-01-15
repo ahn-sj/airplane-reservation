@@ -1,11 +1,10 @@
-package airplainreservation.highestway.advice;
+package airplainreservation.highestway.common.advice;
 
-import airplainreservation.highestway.exception.CustomCommonException;
-import airplainreservation.highestway.exception.ErrorResponse;
+import airplainreservation.highestway.common.exception.CustomCommonException;
+import airplainreservation.highestway.common.exception.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
