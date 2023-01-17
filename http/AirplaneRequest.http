@@ -4,6 +4,8 @@ Content-Type: application/json
 
 {
   "registrationNumber": "jae",
-  "seatRow": 4,
-  "seatCol": 4
+  "seatRow": 2,
+  "seatCol": 2,
+  "departure": "서울",
+  "arrival": "제주도"
 }

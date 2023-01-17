@@ -1,12 +1,15 @@
 package airplainreservation.highestway.ticket.domain;
 
+import airplainreservation.highestway.airplane.domain.Seat;
 import airplainreservation.highestway.common.domain.BaseTimeEntity;
 import airplainreservation.highestway.member.domain.Member;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -16,6 +19,22 @@ public class Ticket extends BaseTimeEntity {
     @Id @GeneratedValue
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Member member;
+    private String passengerName;
+    private String departure;
+    private String arrival;
+
+    private LocalDateTime boardingTime; // 탑승 시간
+    private String seatNumber;
+
+    //    @ManyToOne(fetch = FetchType.LAZY)
+    //    private Member member;
+
+    @Builder
+    public Ticket(String passengerName, String departure, String arrival, LocalDateTime boardingTime, String seatNumber) {
+        this.passengerName = passengerName;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.boardingTime = boardingTime;
+        this.seatNumber = seatNumber;
+    }
 }

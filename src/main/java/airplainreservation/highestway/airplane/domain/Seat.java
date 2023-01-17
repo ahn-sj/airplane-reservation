@@ -1,7 +1,6 @@
 package airplainreservation.highestway.airplane.domain;
 
 import airplainreservation.highestway.common.domain.BaseTimeEntity;
-import airplainreservation.highestway.ticket.domain.Ticket;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,18 +17,26 @@ public class Seat extends BaseTimeEntity {
     @Id @GeneratedValue
     private Long id;
 
-    private int seatRow; // 가로열
-    private int seatCol; // 세로열
+    private String seatNumber;
+
+    private Boolean reservationEnable;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Airplane airplane;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Ticket ticket;
+    public Seat(String seatNumber) {
+        this.seatNumber = seatNumber;
 
-    public Seat(int seatRow, int seatCol) {
-        this.seatRow = seatRow;
-        this.seatCol = seatCol;
+        reservationEnable = true;
+    }
+
+    public boolean isUnableToReserve() {
+        return !reservationEnable;
+    }
+
+    // TODO: boolean 값을 UPDATE를 하는 방법중에 다른 방법은 없는지
+    public void updateReservationEnable() {
+        this.reservationEnable = !reservationEnable;
     }
 
     public void addSeat(Airplane airplane) {
