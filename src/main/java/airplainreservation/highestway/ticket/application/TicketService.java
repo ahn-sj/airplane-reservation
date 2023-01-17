@@ -33,8 +33,6 @@ public class TicketService {
 
         seat.updateReservationEnable();
 
-        System.out.println("seat = " + seat);
-
         Ticket ticket = Ticket.builder()
                 .passengerName(member.getUsername())
                 .departure(airplane.getDeparture())
@@ -48,19 +46,19 @@ public class TicketService {
         return saveTicket.getId();
     }
 
+    private static void isEnabledSeat(Seat seat) {
+        if(seat.isUnableToReserve()) {
+            throw new CustomCommonException(ErrorCode.RESERVED_AIRPLANE_SEAT);
+        }
+    }
+
     private Seat findSeat(String seatNumber) {
         Seat seat = seatRepository.findBySeatNumber(seatNumber).orElseThrow(
                 () -> new CustomCommonException(ErrorCode.NOT_EXISTS_SEAT)
         );
         isEnabledSeat(seat);
-        
-        return seat;
-    }
 
-    private static void isEnabledSeat(Seat seat) {
-        if(seat.isUnableToReserve()) {
-            throw new CustomCommonException(ErrorCode.RESERVED_AIRPLANE_SEAT);
-        }
+        return seat;
     }
 
     private Airplane findAirplane(Long airplaneId) {
