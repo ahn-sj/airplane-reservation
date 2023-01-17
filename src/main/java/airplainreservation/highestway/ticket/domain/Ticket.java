@@ -1,5 +1,6 @@
 package airplainreservation.highestway.ticket.domain;
 
+import airplainreservation.highestway.airplane.domain.Seat;
 import airplainreservation.highestway.common.domain.BaseTimeEntity;
 import airplainreservation.highestway.member.domain.Member;
 import lombok.AccessLevel;
@@ -18,4 +19,9 @@ public class Ticket extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
+    @OneToOne
+    @JoinColumn(name = "seat_id")
+    private Seat seat;
+
 }

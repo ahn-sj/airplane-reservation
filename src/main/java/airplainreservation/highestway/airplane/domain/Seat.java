@@ -24,9 +24,6 @@ public class Seat extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Airplane airplane;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Ticket ticket;
-
     public Seat(int seatRow, int seatCol) {
         this.seatRow = seatRow;
         this.seatCol = seatCol;
