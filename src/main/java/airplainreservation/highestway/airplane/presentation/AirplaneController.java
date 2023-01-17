@@ -22,6 +22,7 @@ public class AirplaneController {
     @PostMapping("/save")
     public ResponseEntity<Void> saveAirplane(@RequestBody AirplaneRegisterRequest airplaneRegisterRequest) {
         Long airplaneId = airplaneService.saveAirplaneWithSeatList(airplaneRegisterRequest);
+
         return ResponseEntity.created(URI.create("api/airplane/" + airplaneId)).build();
     }
 }

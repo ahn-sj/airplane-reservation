@@ -40,7 +40,7 @@ public class AirplaneService {
     }
 
     private void createFromRowColToSeat(Airplane airplane, int seatRow, int seatCol) {
-        validateSeatSize(seatRow);
+        validateSeatSize(seatRow, seatCol);
 
         for (int i = SEAT_ROW_START; i < seatRow; i++) {
             for (int j = SEAT_COLUMN_START; j <= seatCol; j++) {
@@ -52,9 +52,13 @@ public class AirplaneService {
         }
     }
 
-    private static void validateSeatSize(int seatRow) {
-        if(seatRow > 26 || seatRow == 0) {
+    private static void validateSeatSize(int seatRow, int seatCol) {
+        if(isValidSeatSize(seatRow, seatCol)) {
             throw new CustomCommonException(ErrorCode.SEAT_OUT_OF_BOUNDS);
         }
+    }
+
+    private static boolean isValidSeatSize(int seatRow, int seatCol) {
+        return seatRow > 26 || seatCol < 10 || seatRow < 1 || seatCol < 1;
     }
 }

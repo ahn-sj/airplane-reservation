@@ -20,6 +20,7 @@ public class MemberRequest {
         private String password;
         @NotEmpty
         private String email;
+
         private MemberRole role = MemberRole.ROLE_USER;
 
         public MemberRegisterRequest(String username, String password, String email) {

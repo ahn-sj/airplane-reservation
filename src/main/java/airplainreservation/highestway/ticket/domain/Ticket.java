@@ -26,9 +26,6 @@ public class Ticket extends BaseTimeEntity {
     private LocalDateTime boardingTime; // 탑승 시간
     private String seatNumber;
 
-    //    @ManyToOne(fetch = FetchType.LAZY)
-    //    private Member member;
-
     @Builder
     public Ticket(String passengerName, String departure, String arrival, LocalDateTime boardingTime, String seatNumber) {
         this.passengerName = passengerName;

@@ -14,7 +14,6 @@ public class TicketRequest {
         private String seatNumber;
         private LocalDateTime reservationTime;
 
-        @Builder
         public TicketCreateRequest(String seatNumber, LocalDateTime reservationTime) {
             this.seatNumber = seatNumber;
             this.reservationTime = reservationTime;

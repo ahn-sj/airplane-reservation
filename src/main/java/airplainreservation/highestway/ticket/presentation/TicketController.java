@@ -22,7 +22,6 @@ public class TicketController {
     public ResponseEntity<Void> create(@PathVariable Long airplaneId,
                                          @RequestBody TicketCreateRequest ticketCreateRequest,
                                          @AuthenticationPrincipal UserPrincipal userPrincipal) {
-        System.out.println("TicketController.create");
         Long ticketId = ticketService.saveReservation(
                 airplaneId,
                 userPrincipal.getMember().getId(),
