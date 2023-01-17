@@ -31,7 +31,7 @@ public class AirplaneService {
         String departure = airplaneRegisterRequest.getDeparture();
         String arrival = airplaneRegisterRequest.getArrival();
 
-        Airplane airplane = airplaneRepository.save(new Airplane(registrationNumber, departure, arrival));
+        Airplane airplane = airplaneRepository.save(Airplane.of(registrationNumber, departure, arrival));
 
         // TODO: Converter 를 활용한 리팩토링 대상
         createFromRowColToSeat(airplane, seatRow, seatCol);
