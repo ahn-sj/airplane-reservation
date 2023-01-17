@@ -21,12 +21,20 @@ public class Seat extends BaseTimeEntity {
     private int seatRow; // 가로열
     private int seatCol; // 세로열
 
+    private boolean reservationEnable;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Airplane airplane;
 
     public Seat(int seatRow, int seatCol) {
         this.seatRow = seatRow;
         this.seatCol = seatCol;
+
+        reservationEnable = true;
+    }
+
+    public boolean isUnableToReserve() {
+        return !reservationEnable;
     }
 
     public void addSeat(Airplane airplane) {

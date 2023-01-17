@@ -18,11 +18,16 @@ public class Airplane {
 
     private String RegistrationNumber;
 
+    private String departure;
+    private String arrival;
+
     @OneToMany(mappedBy = "airplane", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Seat> seats = new ArrayList<>();
 
     @Builder
-    public Airplane(String registrationNumber) {
+    public Airplane(String registrationNumber, String departure, String arrival) {
         RegistrationNumber = registrationNumber;
+        this.departure = departure;
+        this.arrival = arrival;
     }
 }

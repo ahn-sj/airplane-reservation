@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -17,11 +18,16 @@ public class Ticket extends BaseTimeEntity {
     @Id @GeneratedValue
     private Long id;
 
+    private String passengerName;
+    private String departure;
+    private String arrival;
+
+    private LocalDateTime boardingTime; // 탑승 시간
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
-    @OneToOne
-    @JoinColumn(name = "seat_id")
+    @OneToOne(fetch = FetchType.LAZY)
     private Seat seat;
 
 }
