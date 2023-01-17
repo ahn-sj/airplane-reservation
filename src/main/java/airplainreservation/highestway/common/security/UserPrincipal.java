@@ -20,6 +20,10 @@ public class UserPrincipal implements UserDetails {
         return new UserPrincipal(member);
     }
 
+    public Member getMember() {
+        return member;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();

@@ -24,8 +24,8 @@ public class Ticket extends BaseTimeEntity {
 
     private LocalDateTime boardingTime; // 탑승 시간
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Member member;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Member member;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Seat seat;

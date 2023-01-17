@@ -1,7 +1,6 @@
 package airplainreservation.highestway.airplane.domain;
 
 import airplainreservation.highestway.common.domain.BaseTimeEntity;
-import airplainreservation.highestway.ticket.domain.Ticket;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,17 +17,14 @@ public class Seat extends BaseTimeEntity {
     @Id @GeneratedValue
     private Long id;
 
-    private int seatRow; // 가로열
-    private int seatCol; // 세로열
-
+    private String seatNumber;
     private boolean reservationEnable;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Airplane airplane;
 
-    public Seat(int seatRow, int seatCol) {
-        this.seatRow = seatRow;
-        this.seatCol = seatCol;
+    public Seat(String seatNumber) {
+        this.seatNumber = seatNumber;
 
         reservationEnable = true;
     }
