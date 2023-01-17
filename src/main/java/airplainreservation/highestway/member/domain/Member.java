@@ -30,11 +30,12 @@ public class Member extends BaseTimeEntity {
     }
 
     @Builder
-    public Member(String username, String password, String email, boolean enabled, MemberRole role) {
+    public Member(String username, String password, String email, MemberRole role) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.enabled = enabled;
         this.role = role;
+
+        this.enabled = Boolean.TRUE;
     }
 }

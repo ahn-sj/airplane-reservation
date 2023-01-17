@@ -49,6 +49,7 @@ public class MemberService {
         return tokenResponse;
     }
 
+    @Transactional(readOnly = true)
     public MemberFindResponse find(Long memberId) {
         Member member = findMember(memberId);
         return MemberFindResponse.of(member);

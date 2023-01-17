@@ -18,7 +18,8 @@ public class Seat extends BaseTimeEntity {
     private Long id;
 
     private String seatNumber;
-    private boolean reservationEnable;
+
+    private Boolean reservationEnable;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Airplane airplane;
@@ -31,6 +32,11 @@ public class Seat extends BaseTimeEntity {
 
     public boolean isUnableToReserve() {
         return !reservationEnable;
+    }
+
+    // TODO: boolean 값을 UPDATE를 하는 방법중에 다른 방법은 없는지
+    public void updateReservationEnable() {
+        this.reservationEnable = !reservationEnable;
     }
 
     public void addSeat(Airplane airplane) {

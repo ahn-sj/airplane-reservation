@@ -1,0 +1,9 @@
+### 1. 비행기 티켓 예매
+POST localhost:8080/api/ticket/1/reservations
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWUiLCJleHAiOjE2NzM5NjUwMzksImlhdCI6MTY3Mzk1NzgzOX0.COCBt5y03uDkK9VWU1T5ureyCS1odH1ljcjwwU5qWpM
+
+{
+  "seatNumber": "A02",
+  "reservationTime": "2023-01-19T12:32:22.000003333"
+}
