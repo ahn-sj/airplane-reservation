@@ -29,12 +29,4 @@ public class Airplane {
         this.departure = departure;
         this.arrival = arrival;
     }
-
-    public static Airplane of(String registrationNumber, String departure, String arrival) {
-        return Airplane.builder()
-                .registrationNumber(registrationNumber)
-                .departure(departure)
-                .arrival(arrival)
-                .build();
-    }
 }

@@ -1,5 +1,6 @@
 package airplainreservation.highestway.airplane.dto.request;
 
+import airplainreservation.highestway.airplane.domain.Airplane;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,14 @@ public class AirplaneRequest {
             this.seatRow = seatRow;
             this.departure = departure;
             this.arrival = arrival;
+        }
+
+        public Airplane toEntity() {
+            return Airplane.builder()
+                    .registrationNumber(registrationNumber)
+                    .departure(departure)
+                    .arrival(arrival)
+                    .build();
         }
     }
 }
