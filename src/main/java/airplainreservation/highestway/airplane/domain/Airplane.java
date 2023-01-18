@@ -16,8 +16,7 @@ public class Airplane {
     @Id @GeneratedValue
     private Long id;
 
-    private String RegistrationNumber;
-
+    private String registrationNumber;
     private String departure;
     private String arrival;
 
@@ -26,7 +25,7 @@ public class Airplane {
 
     @Builder
     public Airplane(String registrationNumber, String departure, String arrival) {
-        RegistrationNumber = registrationNumber;
+        this.registrationNumber = registrationNumber;
         this.departure = departure;
         this.arrival = arrival;
     }

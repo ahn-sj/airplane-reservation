@@ -27,11 +27,8 @@ public class AirplaneService {
     public Long saveAirplaneWithSeatList(AirplaneRegisterRequest airplaneRegisterRequest) {
         int seatRow = airplaneRegisterRequest.getSeatRow();
         int seatCol = airplaneRegisterRequest.getSeatCol();
-        String registrationNumber = airplaneRegisterRequest.getRegistrationNumber();
-        String departure = airplaneRegisterRequest.getDeparture();
-        String arrival = airplaneRegisterRequest.getArrival();
 
-        Airplane airplane = airplaneRepository.save(new Airplane(registrationNumber, departure, arrival));
+        Airplane airplane = airplaneRepository.save(airplaneRegisterRequest.toEntity());
 
         // TODO: Converter 를 활용한 리팩토링 대상
         createFromRowColToSeat(airplane, seatRow, seatCol);
