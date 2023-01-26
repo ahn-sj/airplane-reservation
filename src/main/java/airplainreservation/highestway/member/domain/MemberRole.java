@@ -8,4 +8,8 @@ public enum MemberRole {
     MemberRole(String desc) {
         this.desc = desc;
     }
+
+    public String getDesc() {
+        return desc;
+    }
 }
