@@ -2,6 +2,11 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.7'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'jacoco' // jacoco
+}
+
+jacoco {
+	toolVersion = "0.8.8"
 }
 
 group = 'airplain-reservation'
@@ -25,7 +30,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
-	implementation 'io.jsonwebtoken:jjwt'
 
 	compileOnly group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
 	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
@@ -42,4 +46,86 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+	finalizedBy jacocoTestReport
 }
+
+/**
+ * jacoco start
+ */
+jacocoTestReport {
+	reports {
+		html.destination  file("${buildDir}/jacocoHtml")
+		xml.enabled false
+		csv.enabled false
+
+//        html.destination file("src/jacoco/jacoco.html")
+//        xml.destination file("src/jacoco/jacoco.xml")
+	}
+
+	def Qdomains = []
+	for (qPattern in '**/QA'..'**/QZ') { // qPattern = "*.QA","*.QB","*.QC", ... "*.QZ"
+		Qdomains.add(qPattern + '*')
+	}
+
+	afterEvaluate {
+		classDirectories.setFrom(
+				files(classDirectories.files.collect {
+					fileTree(dir: it, excludes: [
+							'**/config/*',
+							'**/security/*',
+							'**/dto/**',
+							'**/common/domain/*',
+							"**/HighestWayApplication.*"
+					] + Qdomains)
+				})
+		)
+	}
+	finalizedBy 'jacocoTestCoverageVerification'
+}
+
+jacocoTestCoverageVerification {
+	def Qdomains = []
+	for (qPattern in '*.QA'..'*.QZ') {
+		Qdomains.add(qPattern + '*')
+	}
+
+	violationRules {
+		rule {
+			element = 'CLASS'
+			enabled = true
+
+//			limit {
+//				counter = 'LINE'
+//				value = 'COVEREDRATIO'
+//				minimum = 0.60
+//			}
+//
+//			limit {
+//				counter = 'METHOD'
+//				value = 'COVEREDRATIO'
+//				minimum = 0.60
+//			}
+
+			excludes = [
+					'**/config/*',
+					'**/security/*',
+					'**/dto/**',
+					'**/highestway/HighestWayApplication',
+			] + Qdomains
+		}
+	}
+}
+
+task testCoverage {
+	group 'verification'
+	description 'Run tests with coverage'
+
+	dependsOn('test', 'jacocoTestReport', 'jacocoTestCoverageVerification')
+
+	tasks['jacocoTestReport'].mustRunAfter(tasks['test'])
+	tasks['jacocoTestCoverageVerification'].mustRunAfter(tasks['jacocoTestReport'])
+}
+/**
+ * jacoco end
+ */

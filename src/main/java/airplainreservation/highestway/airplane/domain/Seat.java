@@ -1,17 +1,13 @@
 package airplainreservation.highestway.airplane.domain;
 
 import airplainreservation.highestway.common.domain.BaseTimeEntity;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of = {"id", "seatRow", "seatCol"})
 public class Seat extends BaseTimeEntity {
 
     @Id @GeneratedValue
@@ -24,10 +20,10 @@ public class Seat extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Airplane airplane;
 
+    @Builder
     public Seat(String seatNumber) {
         this.seatNumber = seatNumber;
-
-        reservationEnable = true;
+        this.reservationEnable = Boolean.TRUE;
     }
 
     public boolean isUnableToReserve() {
