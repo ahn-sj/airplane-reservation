@@ -10,11 +10,9 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Seat extends BaseTimeEntity {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String seatNumber;
-
     private Boolean reservationEnable;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -13,9 +13,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Airplane {
-    @Id @GeneratedValue
-    private Long id;
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String registrationNumber;
     private String departure;
     private String arrival;
