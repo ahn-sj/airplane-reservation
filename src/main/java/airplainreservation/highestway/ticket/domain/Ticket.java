@@ -16,13 +16,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Ticket extends BaseTimeEntity {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String passengerName;
     private String departure;
     private String arrival;
-
     private LocalDateTime boardingTime; // 탑승 시간
     private String seatNumber;
 

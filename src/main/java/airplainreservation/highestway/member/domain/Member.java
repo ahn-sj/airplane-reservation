@@ -13,13 +13,11 @@ import javax.persistence.*;
 @Getter
 public class Member extends BaseTimeEntity {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String username;
     private String password;
     private String email;
-
     private boolean enabled;
 
     @Enumerated(EnumType.STRING)
