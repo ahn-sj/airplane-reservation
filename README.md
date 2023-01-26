@@ -43,6 +43,9 @@
 - MySQL Driver
 - Lombok
 - Dev Tools
+- Thymeleaf
+- flyway
+- jacoco
 
 <br/> 
 
