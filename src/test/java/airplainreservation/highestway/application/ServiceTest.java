@@ -4,13 +4,10 @@ import airplainreservation.highestway.member.application.MemberService;
 import airplainreservation.highestway.member.domain.Member;
 import airplainreservation.highestway.member.domain.MemberRole;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
-
-import static airplainreservation.highestway.member.dto.request.MemberRequest.MemberLoginRequest;
 
 @SpringBootTest
 @ActiveProfiles("test")

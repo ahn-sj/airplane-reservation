@@ -5,16 +5,14 @@ import airplainreservation.highestway.common.exception.CustomCommonException;
 import airplainreservation.highestway.common.exception.ErrorCode;
 import airplainreservation.highestway.member.domain.Member;
 import airplainreservation.highestway.member.domain.MemberRole;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import static airplainreservation.highestway.member.dto.request.MemberRequest.MemberLoginRequest;
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
