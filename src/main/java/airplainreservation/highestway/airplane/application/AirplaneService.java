@@ -56,6 +56,6 @@ public class AirplaneService {
     }
 
     private static boolean isValidSeatSize(int seatRow, int seatCol) {
-        return seatRow > 26 || seatCol < 10 || seatRow < 1 || seatCol < 1;
+        return !(seatRow > 26 || seatCol < 10 || seatRow < 1 || seatCol < 1);
     }
 }
